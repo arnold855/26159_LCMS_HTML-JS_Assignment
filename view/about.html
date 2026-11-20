@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – Legal Case MS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+
+    <div class="hero" style="padding: 60px 24px; margin-bottom: 36px; background-image: linear-gradient(rgba(10,20,40,0.72), rgba(10,20,40,0.72)), url('001.png'); background-size: cover; background-position: center;">
+      <p class="hero-subtitle"></p>
+      <h1 style="font-size:2.2rem">About Legal Case MS</h1>
+      <p class="welcome">
+        Built to help law firms and independent lawyers keep track of their
+        cases, clients, and hearing dates — without juggling spreadsheets or paper files.
+      </p>
+    </div>
+
+    <div class="two-column" style="margin-bottom:40px">
+      <div class="card">
+        <h3>Our Mission</h3>
+        <p>To make legal work more organized, transparent and efficient by giving lawyers
+        and clients simple tools to manage cases, hearings and deadlines.</p>
+      </div>
+      <div class="card">
+        <h3>Our Vision</h3>
+        <p>To become the trusted digital platform for legal practice management
+        accessible to law firms of every size across Africa.</p>
+      </div>
+    </div>
+
+    <p class="section-title">Our Core Values</p>
+    <p class="section-sub">The principles that guide everything we build.</p>
+
+    <div class="values-grid" style="margin-bottom:40px">
+      <div class="value-item">
+        <h4>Integrity</h4>
+        <p>We uphold the highest standards of honesty in every interaction.</p>
+      </div>
+      <div class="value-item">
+        <h4>Confidentiality</h4>
+        <p>All case data is handled with strict privacy and security.</p>
+      </div>
+      <div class="value-item">
+        <h4>Efficiency</h4>
+        <p>We eliminate paperwork so lawyers can focus on what matters.</p>
+      </div>
+      <div class="value-item">
+        <h4>Accessibility</h4>
+        <p>Clients can follow their cases anytime, from anywhere.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Case Lifecycle</h2>
+      <span class="section-badge">How a case moves</span>
+    </div>
+
+    <div class="timeline" style="margin-bottom:40px">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-body">
+          <h4>Case Filed</h4>
+          <p>Lawyer registers the case with title, type, client and filing date.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-body">
+          <h4>Status: Open</h4>
+          <p>Case is active and awaiting first hearing or action.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-body">
+          <h4>Hearing Scheduled</h4>
+          <p>A court date is set. Both lawyer and client can see it on their dashboard.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-body">
+          <h4>Status: In Progress</h4>
+          <p>Proceedings are underway. The case is being actively worked on.</p>
+        </div>
+      </div>
+      <div class="tl-item tl-last">
+        <div class="tl-dot tl-dot-done">✓</div>
+        <div class="tl-body">
+          <h4>Status: Closed</h4>
+          <p>The case has been resolved and is archived for reference.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <span class="section-badge">FAQ</span>
+    </div>
+
+    <div class="faq" style="margin-bottom:40px">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Who can use our LCMS?</button>
+        <div class="faq-a"><p>Any law firm or independent lawyer can register as a Lawyer. Their clients register as Clients. Each role sees only what is relevant to them.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is my data safe?</button>
+        <div class="faq-a"><p>All data is stored in structured JSON files on the server. Access is controlled by role-based sessions — clients can only see their own cases.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can a client register a case?</button>
+        <div class="faq-a"><p>No. Only lawyers can file cases. Clients are assigned to cases by their lawyer and can then track progress from their own dashboard.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What case types are supported?</button>
+        <div class="faq-a"><p>Our LCMS currently supports Civil, Criminal, Family, Commercial and Labour cases, covering the most common areas of the legal practice.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How do I track upcoming hearings?</button>
+        <div class="faq-a"><p>The lawyer dashboard shows a live count of hearings scheduled within the next 30 days so nothing is ever missed.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-strip">
+      <h2>Join the platform today</h2>
+      <p>Start managing your cases in a professional way.</p>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <button class="back-to-top" id="backToTop" title="Back to top"></button>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+  </script>
+
+  <script>
+    document.querySelectorAll(".faq-q").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains("faq-open");
+        document.querySelectorAll(".faq-item").forEach(function (i) {
+          i.classList.remove("faq-open");
+          i.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          item.classList.add("faq-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    const btn = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () { btn.classList.toggle("visible", window.scrollY > 300); });
+    btn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  </script>
+
+</body>
+</html>

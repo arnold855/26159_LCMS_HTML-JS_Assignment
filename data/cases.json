@@ -1,0 +1,57 @@
+[
+    {
+        "id": "C-1",
+        "title": "violence",
+        "type": "Criminal",
+        "status": "Open",
+        "lawyerId": 2,
+        "clientId": 1,
+        "filed": "2023-08-12",
+        "hearing": "2024-01-02",
+        "description": "violence killing"
+    },
+    {
+        "id": "C-2",
+        "title": "killing",
+        "type": "Criminal",
+        "status": "Open",
+        "lawyerId": 3,
+        "clientId": 1,
+        "filed": "2024-09-13",
+        "hearing": "2024-12-12",
+        "description": "killing criminal"
+    },
+    {
+        "id": "C-3",
+        "title": "violence",
+        "type": "Criminal",
+        "status": "In Progress",
+        "lawyerId": 3,
+        "clientId": 1,
+        "filed": "2026-10-12",
+        "hearing": "2026-10-29",
+        "description": "Criminal Violence"
+    },
+    {
+        "id": "C-4",
+        "title": "violence",
+        "type": "Civil",
+        "status": "Closed",
+        "lawyerId": 2,
+        "clientId": 1,
+        "filed": "2026-10-22",
+        "hearing": "2026-10-30",
+        "description": "dertyuiolkijhgfd"
+    },
+    {
+        "id": "C-5",
+        "title": "smith",
+        "type": "Civil",
+        "status": "In Progress",
+        "lawyerId": 4,
+        "clientId": 1,
+        "filed": "2026-01-10",
+        "hearing": "2026-12-12",
+        "description": "civil"
+    }
+]

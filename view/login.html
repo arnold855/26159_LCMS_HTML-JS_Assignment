@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In – Legal Case MS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <div class="auth-page">
+    <div class="auth-side">
+      <h2>Welcome Back</h2>
+      <p>Sign in to access your legal case dashboard and stay on top of every case and hearing.</p>
+      <ul>
+        <li>View all your active cases</li>
+        <li>Track upcoming hearing dates</li>
+        <li>Communicate with your lawyer or clients</li>
+        <li>Secure, role-based access</li>
+      </ul>
+    </div>
+    <div class="auth-form-side">
+      <form class="form-card" id="loginForm" novalidate>
+        <h2>Sign In</h2>
+        <p class="form-sub">Choose your role and enter your credentials</p>
+
+        <label for="role">I am a</label>
+        <select id="role" name="role" required>
+          <option value="">-- Choose account type --</option>
+          <option value="lawyer">Lawyer</option>
+          <option value="client">Client</option>
+        </select>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@gmail.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <p id="errorMessage" class="error-text" style="display:none"></p>
+
+        <button type="submit" class="btn-primary" id="submitBtn">Sign In</button>
+        <p class="muted">No account yet? <a href="register.html">Create one here</a></p>
+      </form>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+  </script>
+  <script type="module" src="../controller/auth.js"></script>
+
+</body>
+</html>

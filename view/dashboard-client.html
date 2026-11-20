@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard – Legal Case MS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+
+    <div class="dash-banner">
+      <div>
+        <h1>Welcome back, <span id="welcomeName"></span></h1>
+        <p>Here's an overview of your legal cases and upcoming hearings.</p>
+      </div>
+      <span class="dash-banner-role">Client Portal</span>
+    </div>
+
+    <div class="dash-layout">
+
+      <aside class="dash-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-avatar" id="sidebarInitial">C</div>
+          <div class="sidebar-name" id="sidebarName">Client</div>
+          <div class="sidebar-role">Client</div>
+          <ul class="sidebar-menu">
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#my-cases">My Cases</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="dash-content">
+
+        <section id="overview" class="dash-section">
+          <div class="section-header">
+            <h2>Overview</h2>
+            <span class="section-badge">Stats</span>
+          </div>
+
+          <div class="quick-actions">
+            <a href="#my-cases" class="qa-card"><span class="qa-icon"></span><span>My Cases</span></a>
+            <a href="profile.html" class="qa-card"><span class="qa-icon"></span><span>Profile</span></a>
+            <a href="contact.html" class="qa-card"><span class="qa-icon"></span><span>Contact Us</span></a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><p>Total Cases</p><h2 id="statTotal">0</h2></div>
+            <div class="stat"><p>Open</p><h2 id="statOpen">0</h2></div>
+            <div class="stat"><p>In Progress</p><h2 id="statInProgress">0</h2></div>
+            <div class="stat"><p>Closed</p><h2 id="statClosed">0</h2></div>
+            <div class="stat"><p>Upcoming Hearings</p><h2 id="statUpcoming">0</h2></div>
+          </div>
+        </section>
+
+        <section id="my-cases" class="dash-section">
+          <div class="table-toolbar">
+            <strong>Your Cases</strong>
+            <input type="text" class="search-input" id="caseSearch" placeholder="Search by title, type or status...">
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Case No.</th><th>Title</th><th>Type</th>
+                <th>Status</th><th>Lawyer</th><th>Next Hearing</th>
+              </tr>
+            </thead>
+            <tbody id="casesTableBody"></tbody>
+          </table>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+    const raw = localStorage.getItem("lex_user");
+    if (raw) {
+      const u = JSON.parse(raw);
+      const n = document.getElementById("sidebarName");
+      const i = document.getElementById("sidebarInitial");
+      if (n) n.textContent = u.name;
+      if (i) i.textContent = u.name.charAt(0).toUpperCase();
+    }
+  </script>
+  <script type="module" src="../controller/dashboard-client.js"></script>
+
+  <script>
+    const btn = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () { btn.classList.toggle("visible", window.scrollY > 300); });
+    btn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+    document.getElementById("caseSearch").addEventListener("input", function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll("#casesTableBody tr").forEach(function (row) {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "James Okafor",
+        "email": "james.okafor@gmail.com",
+        "subject": "Book a consultation",
+        "message": "Hello, I would like to book a consultation regarding a civil dispute over property ownership. Please let me know your available slots.",
+        "time": "2026-09-10T09:15:00+00:00"
+    },
+    {
+        "name": "Sophie Mensah",
+        "email": "sophie.mensah@gmail.com",
+        "subject": "Technical support",
+        "message": "I registered as a client but I cannot see my cases on the dashboard. Could you please help me resolve this issue?",
+        "time": "2026-09-12T14:30:00+00:00"
+    },
+    {
+        "name": "irankunda kenny",
+        "email": "irankunda@gmail.com",
+        "subject": "Book a consultation",
+        "message": "i want to meet you",
+        "time": "2026-10-12T13:21:29+02:00"
+    },
+    {
+        "name": "Vanny Grace Irakoze",
+        "email": "arnoldbrucentwali@gmail.com",
+        "subject": "Book a consultation",
+        "message": "I need your help",
+        "time": "2026-10-12T15:18:18+02:00"
+    }
+]

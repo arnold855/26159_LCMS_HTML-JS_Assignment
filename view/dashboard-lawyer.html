@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lawyer Dashboard – Legal Case MS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+
+    <div class="dash-banner">
+      <div>
+        <h1>Welcome back, <span id="welcomeName"></span></h1>
+        <p>Manage your cases and add new ones.</p>
+      </div>
+      <span class="dash-banner-role">Lawyer Portal</span>
+    </div>
+
+    <div class="dash-layout">
+
+      <aside class="dash-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-avatar" id="sidebarInitial">L</div>
+          <div class="sidebar-name" id="sidebarName">Lawyer</div>
+          <div class="sidebar-role">Lawyer</div>
+          <ul class="sidebar-menu">
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#my-cases">My Cases</a></li>
+            <li><a href="#new-case">New Case</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="dash-content">
+
+        <section id="overview" class="dash-section">
+          <div class="section-header">
+            <h2>Overview</h2>
+            <span class="section-badge">Stats</span>
+          </div>
+
+          <div class="quick-actions">
+            <a href="#new-case" class="qa-card"><span class="qa-icon"></span><span>New Case</span></a>
+            <a href="#my-cases" class="qa-card"><span class="qa-icon"></span><span>My Cases</span></a>
+            <a href="profile.html" class="qa-card"><span class="qa-icon"></span><span>Profile</span></a>
+            <a href="contact.html" class="qa-card"><span class="qa-icon"></span><span>Contact</span></a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><p>Total Cases</p><h2 id="statTotal">0</h2></div>
+            <div class="stat"><p>Open</p><h2 id="statOpen">0</h2></div>
+            <div class="stat"><p>In Progress</p><h2 id="statInProgress">0</h2></div>
+            <div class="stat"><p>Closed</p><h2 id="statClosed">0</h2></div>
+            <div class="stat"><p>Upcoming Hearings</p><h2 id="statUpcoming">0</h2></div>
+          </div>
+
+          <h3 style="margin-top:20px; color:var(--navy); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.5px;">Cases by Type</h3>
+          <ul id="typeBreakdown" class="breakdown" style="margin-top:10px"></ul>
+        </section>
+
+        <section id="my-cases" class="dash-section">
+          <div class="table-toolbar">
+            <strong>Your Cases</strong>
+            <input type="text" class="search-input" id="caseSearch" placeholder="Search cases...">
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Case No.</th><th>Title</th><th>Type</th>
+                <th>Status</th><th>Client</th><th>Next Hearing</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="casesTableBody"></tbody>
+          </table>
+        </section>
+
+        <section id="new-case" class="dash-section">
+          <div class="section-header">
+            <h2>Register a New Case</h2>
+            <span class="section-badge">New</span>
+          </div>
+          <form id="newCaseForm" novalidate style="max-width:560px">
+
+            <label for="caseTitle">Case Title</label>
+            <input type="text" id="caseTitle" name="caseTitle" placeholder="e.g. Smith vs. Jones" required minlength="5" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;">
+
+            <label for="caseType" style="margin-top:14px;display:block;font-weight:600;font-size:0.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;">Case Type</label>
+            <select id="caseType" name="caseType" required style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;">
+              <option value="">-- Choose type --</option>
+              <option>Civil</option>
+              <option>Criminal</option>
+              <option>Family</option>
+              <option>Commercial</option>
+              <option>Labour</option>
+            </select>
+
+            <label for="caseClient" style="margin-top:14px;display:block;font-weight:600;font-size:0.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;">Client</label>
+            <select id="caseClient" name="caseClient" required style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;">
+              <option value="">-- Choose client --</option>
+            </select>
+
+            <label for="caseFiled" style="margin-top:14px;display:block;font-weight:600;font-size:0.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;">Filing Date</label>
+            <input type="date" id="caseFiled" name="caseFiled" required style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;">
+
+            <label for="caseHearing" style="margin-top:14px;display:block;font-weight:600;font-size:0.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;">Next Hearing Date <span style="font-weight:400;text-transform:none;color:var(--text-muted)">(optional)</span></label>
+            <input type="date" id="caseHearing" name="caseHearing" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;">
+
+            <label for="caseDescription" style="margin-top:14px;display:block;font-weight:600;font-size:0.85rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;">Description</label>
+            <textarea id="caseDescription" name="caseDescription" rows="4" placeholder="Brief case description..." required minlength="10" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:0.95rem;font-family:inherit;background:#fafbfd;outline:none;resize:vertical;"></textarea>
+
+            <p id="formMessage" style="display:none"></p>
+
+            <button type="submit" class="btn-primary" id="saveBtn" style="margin-top:20px;">Save Case</button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <button class="back-to-top" id="backToTop" title="Back to top"></button>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+    const raw = localStorage.getItem("lex_user");
+    if (raw) {
+      const u = JSON.parse(raw);
+      const n = document.getElementById("sidebarName");
+      const i = document.getElementById("sidebarInitial");
+      if (n) n.textContent = u.name;
+      if (i) i.textContent = u.name.charAt(0).toUpperCase();
+    }
+  </script>
+  <script type="module" src="../controller/dashboard-lawyer.js"></script>
+
+  <script>
+    const btn = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () { btn.classList.toggle("visible", window.scrollY > 300); });
+    btn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+    // Search filter
+    document.getElementById("caseSearch").addEventListener("input", function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll("#casesTableBody tr").forEach(function (row) {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>

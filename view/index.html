@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Case Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+
+    <div class="hero">
+      <p class="hero-subtitle">Legal Case Platform</p>
+      <h1>Legal Case Management System</h1>
+      <p class="welcome">
+        A modern platform where lawyers and clients track 
+        legal cases, hearings, and progress all in one place.
+      </p>
+      <div class="hero-actions">
+        <a href="register.html" class="btn-primary">Get Started</a>
+        <a href="about.html" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stats-bar-item"><div class="sbi-num" id="statCases">...</div><div class="sbi-label">Cases Managed</div></div>
+      <div class="stats-bar-item"><div class="sbi-num" id="statLawyers">...</div><div class="sbi-label">Registered Lawyers</div></div>
+      <div class="stats-bar-item"><div class="sbi-num">98%</div><div class="sbi-label">Client Satisfaction</div></div>
+      <div class="stats-bar-item"><div class="sbi-num">24/7</div><div class="sbi-label">Access</div></div>
+    </div>
+
+    <p class="section-title">Everything You Need</p>
+    <p class="section-sub">Powerful tools built for legal professionals and their clients.</p>
+
+    <div class="features">
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Case Management</h3>
+        <p>Create, organize, and follow up on every case from a single dashboard with full history.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Client Management</h3>
+        <p>Keep client details linked to the cases they're involved in, always up to date.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Hearing Tracking</h3>
+        <p>See upcoming hearing dates at a glance so no deadline is ever missed.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Secure Access</h3>
+        <p>Role-based access ensures lawyers and clients only see what they need to see.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Live Statistics</h3>
+        <p>Dashboard stats give you an instant overview of open, in-progress, and closed cases.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon"></span>
+        <h3>Case Descriptions</h3>
+        <p>Attach detailed notes and descriptions to every case for complete documentation.</p>
+      </div>
+    </div>
+
+    <div class="legal-tip-banner">
+      <span class="tip-label">Legal Tip</span>
+      <span class="tip-text" id="tipText">Did you know? A written contract is always stronger than a verbal agreement in court.</span>
+    </div>
+
+    <div class="cta-strip">
+      <h2>Ready to get organized?</h2>
+      <p>Join hundreds of legal professionals already using our platform.</p>
+      <a href="register.html" class="btn-primary">Create Your Account</a>
+    </div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+  </script>
+
+  <script>
+    // Live stats from JSON
+    Promise.all([
+      fetch("../data/cases.json", { cache: "no-store" }).then(r => r.json()),
+      fetch("../data/users.json", { cache: "no-store" }).then(r => r.json())
+    ]).then(function(results) {
+      const cases = results[0];
+      const users = results[1];
+      document.getElementById("statCases").textContent = cases.length;
+      document.getElementById("statLawyers").textContent = users.filter(u => u.role === "lawyer").length;
+    }).catch(function() {
+      document.getElementById("statCases").textContent = "—";
+      document.getElementById("statLawyers").textContent = "—";
+    });
+
+    // Legal tip rotator
+    const tips = [
+      "Did you know? A written contract is always stronger than a verbal agreement in court.",
+      "Did you know? You have the right to request a copy of any legal document filed in your name.",
+      "Did you know? Missing a hearing date can result in automatic judgment against you.",
+      "Did you know? Legal deadlines called 'statutes of limitations' vary by case type.",
+      "Did you know? Confidentiality between a lawyer and client is protected by law."
+    ];
+    let tipIndex = 0;
+    const tipEl = document.getElementById("tipText");
+    setInterval(function () {
+      tipEl.style.opacity = 0;
+      setTimeout(function () {
+        tipIndex = (tipIndex + 1) % tips.length;
+        tipEl.textContent = tips[tipIndex];
+        tipEl.style.opacity = 1;
+      }, 400);
+    }, 5000);
+
+    // Back to top
+    const btn = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () {
+      btn.classList.toggle("visible", window.scrollY > 300);
+    });
+    btn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  </script>
+
+</body>
+</html>

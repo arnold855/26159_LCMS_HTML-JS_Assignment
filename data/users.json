@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "kabera tony",
+        "email": "kabera@gmail.com",
+        "phone": "0786999221",
+        "password": "123456789",
+        "role": "client"
+    },
+    {
+        "id": 2,
+        "name": "kabera bruno",
+        "email": "bruno@gmail.com",
+        "phone": "0782377777",
+        "password": "123456789",
+        "role": "lawyer"
+    },
+    {
+        "id": 3,
+        "name": "kalisa ben",
+        "email": "kalisa@gmail.com",
+        "phone": "0789788888",
+        "password": "123456789",
+        "role": "lawyer"
+    },
+    {
+        "id": 4,
+        "name": "vanny grace irakoze",
+        "email": "grace@gmail.com",
+        "phone": "0786767637",
+        "password": "123456789",
+        "role": "lawyer"
+    }
+]

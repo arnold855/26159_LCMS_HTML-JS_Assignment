@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account – Legal Case MS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <div class="auth-page">
+    <div class="auth-side">
+      <h2>Join the Platform</h2>
+      <p>Create your account and start managing legal cases in a professional way — whether you're a lawyer or a client.</p>
+      <ul>
+        <li>Free to register</li>
+        <li>Portals for lawyers and clients</li>
+        <li>Instant access after registration</li>
+        <li>Your data stays private and secure</li>
+      </ul>
+    </div>
+    <div class="auth-form-side">
+      <form class="form-card" id="registerForm" novalidate>
+        <h2>Create Account</h2>
+        <p class="form-sub">Fill in your details to get started</p>
+
+        <label for="role"></label>
+        <select id="role" name="role" required>
+          <option value="">-- Choose account type --</option>
+          <option value="lawyer">Lawyer</option>
+          <option value="client">Client</option>
+        </select>
+
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required minlength="3">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@gmail.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+250 7XX XXX XXX" required pattern="07[0-9]{8}" title="10 digits starting with 07">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 8 characters" required minlength="8">
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password" required>
+
+        <p id="errorMessage" class="error-text" style="display:none"></p>
+        <p id="successMessage" class="success-text" style="display:none"></p>
+
+        <button type="submit" class="btn-primary" id="submitBtn">Create Account</button>
+        <p class="muted">Already have an account? <a href="login.html">Sign in here</a></p>
+      </form>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script type="module">
+    import { renderHeader, renderFooter } from "../controller/nav.js";
+    renderHeader();
+    renderFooter();
+  </script>
+  <script type="module" src="../controller/auth.js"></script>
+
+</body>
+</html>
